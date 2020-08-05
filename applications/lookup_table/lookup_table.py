@@ -1,4 +1,6 @@
 # Your code here
+import random
+import math
 
 
 def slowfun_too_slow(x, y):
@@ -9,12 +11,33 @@ def slowfun_too_slow(x, y):
 
     return v
 
+
+fastDict = {}
+
+
 def slowfun(x, y):
     """
     Rewrite slowfun_too_slow() in here so that the program produces the same
     output, but completes quickly instead of taking ages to run.
     """
     # Your code here
+
+    if str(f'{x}, {y}') not in fastDict:
+        fastDict[str(f'{x}, {y}')] = slowfun_too_slow(x, y)
+        return fastDict[str(f'{x}, {y}')]
+
+    return fastDict[str(f'{x}, {y}')]
+
+    # fastDict = {}
+    # v = math.pow(x, y)
+    # if v not in fastDict:
+    #     fastDict[v] = math.factorial(v)
+    #     fastDict[v] //= (x + y)
+    #     fastDict[v] %= 982451653
+    #
+    # v = fastDict[v]
+    #
+    # return v
 
 
 
